@@ -52,3 +52,43 @@ We can use place holders for the variables like this - fmt.Printf("something %v 
 we change the Println to Printf, and within the quotes we use %v and at the end of the quotes we will need a \n for new line and after the quotes we need to indicate the name of the var
 
 There are other ways to format output with variables - chack the docs https://pkg.go.dev/fmt@go1.25.5
+
+3. Data types
+What happens if we want to use a variable that is yet unknown?
+Like using a variable which its value is a user name that the user needs to prompt?
+
+we can define within our
+```
+func main() {
+    var userName
+    // ask user for their name
+
+    userName = "Lior"
+    fmt.Println(userName)
+}
+```
+But this will result in an error that it expects a data type for the var.
+Data types can be Strings, Integers, Booleans, Maps, Arrays ...
+So we need to add
+```
+var userName string
+```
+
+4. We can print out the types of the variables by using the %T placeholder:
+
+```
+fmt.Printf("conferenceTickets is %T, remainingTickets is %T, conferenceName is %T\n", conferenceTickets, remainingTickets, conferenceName)
+```
+
+5. There are several datatypes for numbers, like float (12.34) and uint(which is only allowing positive numbers)
+so we can indicate for the number of tickets the uint data type so it will not go under zero.
+
+6. Another way to declare variabels, instead of the first, use the second:
+
+```
+var conferenceName = "Go Conference"
+conferenceName := "Go Conference"
+```
+
+This works with VARS ONLY and not with constants
+
