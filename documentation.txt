@@ -45,15 +45,20 @@ the GO installation - visit https://pkg.go.dev/std
 ## Building our App ##
 ======================
 
-1. Variables and constants - in commit vars and consts
+==========================
+Variables and constants - in commit vars and consts
+==========================
 
-2. Formatting output - in commit with this name
+====================
+Formatting output - in commit with this name
+====================
 We can use place holders for the variables like this - fmt.Printf("something %v something\n", varName)
 we change the Println to Printf, and within the quotes we use %v and at the end of the quotes we will need a \n for new line and after the quotes we need to indicate the name of the var
 
 There are other ways to format output with variables - chack the docs https://pkg.go.dev/fmt@go1.25.5
-
-3. Data types
+===========
+Data types
+===========
 What happens if we want to use a variable that is yet unknown?
 Like using a variable which its value is a user name that the user needs to prompt?
 
@@ -74,16 +79,16 @@ So we need to add
 var userName string
 ```
 
-4. We can print out the types of the variables by using the %T placeholder:
+## We can print out the types of the variables by using the %T placeholder:
 
 ```
 fmt.Printf("conferenceTickets is %T, remainingTickets is %T, conferenceName is %T\n", conferenceTickets, remainingTickets, conferenceName)
 ```
 
-5. There are several datatypes for numbers, like float (12.34) and uint(which is only allowing positive numbers)
+## There are several datatypes for numbers, like float (12.34) and uint(which is only allowing positive numbers)
 so we can indicate for the number of tickets the uint data type so it will not go under zero.
 
-6. Another way to declare variabels, instead of the first, use the second:
+## Another way to declare variabels, instead of the first, use the second:
 
 ```
 var conferenceName = "Go Conference"
@@ -92,3 +97,16 @@ conferenceName := "Go Conference"
 
 This works with VARS ONLY and not with constants
 
+===================
+Getting User Input
+===================
+
+In order to get user input we use another function from the fmt package - fmt.Scan()
+this function alone doesnt prompt anything for the user and we need to use a pointer (& sign)
+```
+fmt.Scan(&userName)
+```
+This pointer makes the value availble in our code for use.
+
+====================
+Book ticket Logic
