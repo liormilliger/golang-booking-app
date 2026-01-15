@@ -1,0 +1,38 @@
+1. We start with creating main.go
+and within it we put a simple command for printing Hello World on the screen.
+We can see an error and this is not going to work, because we need to init our project module .
+
+2. For that to happen we execute the following command:
+```
+go mod init booking-app 
+```
+which initiates our project and creates a go.mod file which is the module for our project
+
+3. In go everything is organized in packages, so we need to start from that here:
+As a first line in our GO application, we define the keyword "package" and then the name of the package,  
+which our application will be part of - and the standard name for the main application is main.
+
+4. The next thing expected is declaration, which basically means that GO doesn't know where to start executing the application, it needs an entrypoint.
+We have to declare the entrypoint of our application - in which kine the execution of the code starts.
+We create a function called main and put the logic within that main function.
+```
+func main() {
+    application logic...
+}
+```
+
+for one GO application we will have only one main, because we can have only one entry point per application.
+
+5. The next thing we will need to import the packages from which we take our functionalities.
+So if we want to use the Print functionality we need to import the fmt package:
+```
+import "fmt"
+```
+and then to indicate that object on the Print function as 
+```
+fmt.Print("")
+```
+
+6. In order to know what are the default packages that are within 
+the GO installation - visit https://pkg.go.dev/std
+
