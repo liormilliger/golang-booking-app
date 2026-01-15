@@ -119,7 +119,7 @@ remainingTickets = remainingTickets - userTickets
 ```
 
 ================
-Arrays & Slices
+Arrays
 ================
 We will create an Array for all the bookings
 the array in GO is fixed size, meaning we need to define the maximum size for it within []
@@ -154,3 +154,27 @@ and then we start filling it up with the username:
 bookings[0] = firstName + " " + lastName
 ```
 but we will need to use it ONLY AFTER these variables had been declared, so further down the code
+
+
+===========
+Slices
+===========
+
+What if we don't know in advance the size we would need for the array?
+we need a list that is more dynamic in size.
+
+Slice is an abstraction of an Array
+It uses the array type under the hood but it uses a dynamic size.
+
+Working with slices is more efficient than working with arrays, so using slices is a better option.
+
+A slice is an array without a size definition.
+```
+var bookings []string
+```
+
+While in arrays we use indexes (bookings[0]), slices adds the next elemnt to the list.
+```
+bookings = append(bookings, firstName + " " + lastName)
+```
+
