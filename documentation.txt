@@ -1,3 +1,6 @@
+================
+## First Step ##
+================
 1. We start with creating main.go
 and within it we put a simple command for printing Hello World on the screen.
 We can see an error and this is not going to work, because we need to init our project module .
@@ -36,3 +39,10 @@ fmt.Print("")
 6. In order to know what are the default packages that are within 
 the GO installation - visit https://pkg.go.dev/std
 
+7. Println command will print in a new line
+
+======================
+## Building our App ##
+======================
+
+Variables and constants - in commit vars and consts
