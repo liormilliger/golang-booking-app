@@ -45,4 +45,10 @@ the GO installation - visit https://pkg.go.dev/std
 ## Building our App ##
 ======================
 
-Variables and constants - in commit vars and consts
+1. Variables and constants - in commit vars and consts
+
+2. Formatting output - in commit with this name
+We can use place holders for the variables like this - fmt.Printf("something %v something\n", varName)
+we change the Println to Printf, and within the quotes we use %v and at the end of the quotes we will need a \n for new line and after the quotes we need to indicate the name of the var
+
+There are other ways to format output with variables - chack the docs https://pkg.go.dev/fmt@go1.25.5
