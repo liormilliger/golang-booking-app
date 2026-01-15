@@ -118,4 +118,39 @@ but since data types needs to be the same to perform this reduction, we will als
 remainingTickets = remainingTickets - userTickets
 ```
 
-============
+================
+Arrays & Slices
+================
+We will create an Array for all the bookings
+the array in GO is fixed size, meaning we need to define the maximum size for it within []
+this size indicates how many elements this array can hold
+```
+var bookings = [50]
+```
+
+The next thing we need to define is the type of the elements this aaray will contain.
+We want to save the name of the user who booked the ticket, which is a string.
+```
+var bookings = [50]string
+```
+
+Finally, we will need the actual value - we can assign an empty array or assign a few names:
+```
+```
+var bookings = [50]{"Lior", "Inbal", "Nana"}
+```
+Because we define a data type for the array, we have to use the defined data type and we cannot mix datatypes.
+Usually we will start with an empty list
+
+If we want to define an Array and use variables, first we remove the "=" sign and we dont use the {}:
+
+```
+var bookings [50]string
+```
+
+and then we start filling it up with the username:
+
+```
+bookings[0] = firstName + " " + lastName
+```
+but we will need to use it ONLY AFTER these variables had been declared, so further down the code
