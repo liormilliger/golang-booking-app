@@ -110,3 +110,12 @@ This pointer makes the value availble in our code for use.
 
 ====================
 Book ticket Logic
+====================
+This is quite simple - we reduce the number of userTickets from the remainingTickets,
+but since data types needs to be the same to perform this reduction, we will also change the userTickets to uint data type
+
+```
+remainingTickets = remainingTickets - userTickets
+```
+
+============
