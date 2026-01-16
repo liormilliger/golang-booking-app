@@ -367,3 +367,51 @@ Execute the code in a loop for as long as a specific condition is true.
 Examples:
 for remainingTickets > 0 {}
 for len(bookings) < 50 {}
+
+=========================
+user validation
+======================
+
+===================
+Switch statements
+===================
+
+If our conference is being held in 6 different cities and for each city the logic for booking tickets is different,
+The user should first have to choose a city, and based on his choise, it switches to the corresponding code:
+```
+city := "London"
+
+switch city {
+    case "New York":
+        // execute code for booking New York conference tickets
+    case "Singapore":
+        // execute code for booking Singapore conference tickets
+    case "London":
+        // execute code for booking London conference tickets
+    case "Berlin":
+        // some code here 
+    case "Mexico City":
+        // some code here
+    case "Hong Kong":
+        // some code here
+    default:
+        fmt.Print("No valid city selected") 
+}
+```
+
+Now, if some cities have the same logic code for booking we can consolidate it as follows:
+```
+city := "London"
+
+switch city {
+    case "New York":
+        // execute code for booking New York conference tickets
+    case "Singapore", "Hong Kong":
+        // execute code for booking Singapore & Hong Kong conference tickets
+    case "London", "Berlin":
+        // execute code for booking London & Berlin conference tickets
+    case "Mexico City":
+        // some code here
+    default:
+        fmt.Print("No valid city selected") 
+}
