@@ -192,3 +192,64 @@ for loop syntax is
 for {}
 ```
 and all the logic we want repetead will be within the {}
+
+================
+For-each Loops
+================
+
+Currently our code prints out the bookings list which contains the full name of the user.
+Let's say we want to show only the first name, so we need to do a repetetive ttask for each of the names and get only the first name within the bookings list.
+
+First we want to create a list, an array of first names:
+```
+firstNames := []string{}
+```
+
+then we want to go through each entry and separate first from last by the space,
+so we use here another (nested) for-loop that goes through the newly inserted entry of bookings list,
+takes the value of that entry and gets it under some variables chain:
+```
+firstNames := []string{}
+for index, booking := range bookings {} 
+```
+This additional line iterates on bookings list and each index's value is now under placeholder of booking (the index itself is also a variable!).
+bookings is the range, the parent array on which we iterate.
+
+within that:
+```
+firstNames := []string{}
+for index, booking := range bookings {
+    var names = strings.Fields(booking)
+    var firstName = names[0]
+}
+```
+What did we add?
+for each iteration, or for each entry/index, we will create a variable called names that will divide the booking value into Fields
+which will be separated as indexes so we can catch the first index under variable firstName from index 0 of names (names[0])
+
+For the last thing here, we want to add the firstName to firstNames list:
+```
+firstNames := []string{}
+for index, booking := range bookings {
+    var names = strings.Fields(booking)
+    var firstName = names[0]
+    firstNames = append(firstNames, firstName)
+}
+```
+
+and to make it shorter we can cut the following line\logic:
+```
+firstNames := []string{}
+for index, booking := range bookings {
+    var names = strings.Fields(booking)
+    firstNames = append(firstNames, names[0])
+}
+```
+
+Now - the index (in for index, booking := range bookings {})
+is a placeholder that is empty and has no value, but we need that space.
+Since that placeholder is in no use, the code errors.
+GO has a solution for that - underscore (_) and this line hsould actually be 
+```
+for _, booking := range bookings {}
+```
