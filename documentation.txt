@@ -415,3 +415,9 @@ switch city {
     default:
         fmt.Print("No valid city selected") 
 }
+```
+
+===============
+functions
+===============
+
