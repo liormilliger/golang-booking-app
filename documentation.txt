@@ -333,7 +333,37 @@ and put this - 	fmt.Printf("We only have %v tickets remaining, so you can't book
  within the else{}
  and we can omit the continue, because it will be done anyway.
 
- 
 
+===========
+else if
+===========
 
+Let's say we wanted to do a completely different thing if userTickets = remainingTickets,
+something that is different from the if block logic or the else block logic. Where would we put it?
 
+In that case we would split up the condition
+```
+if userTickets <= remainingTickets {}
+```
+to  
+```
+if userTickets < remainingTickets {}
+```
+and add at the end of this if block else if{} block as follows:
+```
+else if userTickets == remainingTickets{
+    do something else
+}
+```
+
+We will not implement this as it is not required for our code but basically -
+an If statement will open and an else statement will close it and in between we can have else ifs
+
+==========================
+Conditionals in For Loop
+=========================
+
+Execute the code in a loop for as long as a specific condition is true.
+Examples:
+for remainingTickets > 0 {}
+for len(bookings) < 50 {}
