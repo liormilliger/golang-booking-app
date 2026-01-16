@@ -178,3 +178,17 @@ While in arrays we use indexes (bookings[0]), slices adds the next elemnt to the
 bookings = append(bookings, firstName + " " + lastName)
 ```
 
+=======
+Loops
+=======
+For repetitive tasks, for executing a code multiple times.
+We have only "for" loop (no while, for-each or do-while) for all usecases.
+
+Currently in our app, there is no data persistence - the app is asking for one user to book tickets and then exits.
+In order for the names to accumulate, we will create an infinite loop on the booking tickets logic.
+
+for loop syntax is
+```
+for {}
+```
+and all the logic we want repetead will be within the {}
