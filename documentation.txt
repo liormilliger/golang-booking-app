@@ -311,5 +311,29 @@ In addition to inform the user about this we should stop the app, break the code
 the tickets should not be booked. But we don't really want to break the app, we want to let the user book again with the correct amount, so instead of break we use continue
 and thus it skips the booking and starts the for loop again
 
+if we want to check the reveresed condition, in which the user wants to buy less tickets than remaining or the exact number?
+we change the condition to:
+
+```
+if userTickets <= remainingTickets {}
+```
+
+If this logic is true, then the user can book the tickets, so we put inside the {} the wole logic for booking tickets.
+
+what about the code we already had in the {} ?
+```
+fmt.Printf("We only have %v tickets remaining, so you can't book %v tickets\n", remainingTickets, userTickets)
+```
+first we take it out of the {}.
+
+Then we put all the logic within the new if statement,
+
+create an else{} condition
+and put this - 	fmt.Printf("We only have %v tickets remaining, so you can't book %v tickets\n", remainingTickets, userTickets)
+ within the else{}
+ and we can omit the continue, because it will be done anyway.
+
+ 
+
 
 
