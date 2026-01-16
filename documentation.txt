@@ -253,3 +253,63 @@ GO has a solution for that - underscore (_) and this line hsould actually be
 ```
 for _, booking := range bookings {}
 ```
+
+=================
+If Else
+=================
+Lets examine our app logic. The app will loop infinitely on booking tickets.
+How do we end it? We need it to stop when tickets are sold out.
+after every booking we need to check if the remaining tickets is zero and if it is, we end the application.
+
+We do that using if - else checks.
+
+at the end of the booking, within our infinite for loop, we make the check to see if the remaining tickets are zero.
+
+```
+if remainingTickets == 0 {}
+```
+the data type of such conditional statement is a boolean (TRUE or FALSE).
+So we're telling the program - if this condition is true, execute the code within the {} of the if block
+
+If the condition is not treu, skip the execution of this code within the {} and skip to the next line,
+which in our case is skip to the next iteration of our for loop.
+
+So - If this condition is true and the remaining tickets = zero,
+we want a logic to end this program - break command:
+```
+if remainingTickets == 0 {
+	fmt.Println("Our conference is booked out. Come back next year!")
+	break
+}
+```
+We can define a variable of boolean type and use it like that:
+```
+var noTicketsRemaining bool = remainingTickets == 0
+if noTicketsRemaining {
+	fmt.Println("Our conference is booked out. Come back next year!")
+	break
+}
+```
+
+or simply:
+```
+noTicketsRemaining := remainingTickets == 0
+```
+BUT - since we use this variable only once, there's no need for it.
+
+### OverBooking
+Currently - if a user tries to book over the remaining tickets, he will get an odd message and the loop won't break:
+-- 18446744073709551610 remaining tickets for the Go Conference
+We need to check the the userTickets is smaller than the remainingTickets and create the logic for that:
+```
+if userTickets > remainingTickets {
+    fmt.Printf("We only have %v tickets remaining, so you can't book %v tickets\n", remainingTickets, userTickets)
+}
+```
+
+In addition to inform the user about this we should stop the app, break the code, because if this condition is true,
+the tickets should not be booked. But we don't really want to break the app, we want to let the user book again with the correct amount, so instead of break we use continue
+and thus it skips the booking and starts the for loop again
+
+
+
