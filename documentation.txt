@@ -417,7 +417,59 @@ switch city {
 }
 ```
 
-===============
-functions
-===============
+=========================
+functions and parameters
+=========================
 
+see diffs in main.go to see how the function takes a piece of the code and makes it independent function that can be used within the code.
+
+
+=================================
+Returning values from functions
+=================================
+
+We will take the firstName function:
+```
+func printFirstNames(bookings []string) {
+	firstNames := []string{}
+	for _, booking := range bookings {
+		var names = strings.Fields(booking)
+		firstNames = append(firstNames, names[0])
+	}
+	fmt.Printf("The first names of bookings are: %v\n", firstNames)
+}
+```
+
+and we want the final printing to be done from the main function and not from this one,
+so instead of printing the names, we want this function to just return the first names to the main function,
+so the main function can print it itself.
+
+So instead of the print line, we will use:
+
+```
+return firstNames
+```
+
+now this function is doing some logic, and returning a result of that logic to the main function.
+Whenever we return something in a function, we have to say it in the function definition,
+and that we are returning a value of a certain type, and in our case, firstNames are also a slice of string.
+
+```
+func printFirstNames(bookings []string) []string {
+    \\\ rest of the logic...
+}
+```
+
+NOTICE that within these brackets () we have input parameters
+and outside it its output parameters with the type of output we're returning.
+
+And the print line should go back to the main function.
+
+we will also need a variable to get these values, so firstNames(bookings) will become:
+```
+firstNames := getFirstNames(bookings)
+```
+
+--------
+
+User Input validation can also be a candidate for its own function
