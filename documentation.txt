@@ -577,3 +577,96 @@ func ValidateUserInput()
 ```
 
 We can do the same for variables, and we will also Capitalize them.
+
+==============
+Scope Rules
+==============
+Local - within functions or code blocks (in a for loop) - available ONLY within the functions/blocks
+Package - Defining variables on the package level outside the functions, so all functions within the package can use it.
+Global - creating a variable file and using a variable capitalized name within it.
+
+===========
+Maps (2:38:00)
+===========
+
+we will revert our helper package back to main for simplicity
+
+Right now, whaen a user is booking a ticket, we keep only his full name in the bookings list.
+But the email address and the number of tickets they provided, gets ignored, it is not being saved.
+we want to save this information as well.
+
+In our case, bookings is a slice, that allows us to save a list of string values.
+But instead of a string, we want a datatype with multiple key:value pairs per user.
+Something like that:
+```
+firstName: "Lior"
+lastName: "Milliger"
+email: "liorm@email"
+tickets: 3
+```
+
+a datatype that will allow storing multiple key:value pairs per user, is called a map.
+
+Let's see how we can turn our bookings list from a list of strings to a list of maps.
+
+We will first go to the bookTicket function and create a map for a user:
+
+Map is a datatype and just like with any other datatype we create a variable with an empty map.
+how do we create a map? First of all we have a keyword "map" and then we have to define types for key and value: 
+```
+var userData = map[string]string
+```
+This only defines the type of the map. We need to create an empty map.
+We need an expression that is creating an empty map. for that, we have a built in function that is called make()
+```
+var userData = make(map[string]string)
+```
+That would give us an empty map. For the next step, we want to add all the user data 
+How do we add value:key data to a map? 
+nameOfTheMap["key"] = value (of the variable)
+
+```
+var userData = make(map[string]string)
+userData["firstName"] = firstName
+userData["lastName"] = lastName
+userData["email"] = email
+```
+
+These are all strings, but we want also to add the number of tickets, but its datatype is uint and we can't mix datatypes, so what FormatUint
+that comes from package strconv - so strconv.FormatUint()
+We need to call the variable but there's another function needs to be used to transform that number, and Nana does not explain much about it
+and it looks like that:
+```
+strconv.FormatUint(uint64(userTickets), 10)
+```
+
+Now we need to take that map and add it to the bookings list.
+Bookings is a slice of strings and we need to change it to a slice of maps:
+```
+var bookings = make([]map[string]string, 0)
+```
+
+we add the make() in order to create an empty slice of maps, and we also add the zero, because it needs to know the initial size of the list of maps.
+It will increase automatically, but we need to assign the first value here like that.
+
+With this syntax we're initializing a list of maps.
+
+Finally for the last step, we go to our book ticket logic:
+```
+bookings = append(bookings, userData)
+```
+
+we also need to change the function that gets the firstName to get the correct value from the map:
+```
+func getFirstNames() []string {
+	firstNames := []string{}
+	for _, booking := range bookings {
+		firstNames = append(firstNames, booking["firstName"])
+	}
+	return firstNames
+}
+```
+
+==================
+Struct datatype
+==================
