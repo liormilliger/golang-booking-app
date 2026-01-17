@@ -537,3 +537,43 @@ we can siimply pass the folder:
 ```
 go run .
 ```
+
+==================
+Multiple Packages
+==================
+We can also have other packages that belong to the application.
+What can be a use case for that? Booking app for different conferences.
+Booking logic for these confereneces is completely diffferent.
+
+We create package for each location, and in case there's some logic that they all share, it can be a separate common.go package.
+
+Let's move our helper.go to its own package.
+It is common practice to have a dedicated folder for each package
+we will move this whole function logic to helper.go:
+```
+func validateUserInput()
+```
+
+Once we moved helper.go to helper folder and to its own package, tha mani function doesn't recognize the validateUserInput function,
+it doesn't know where it is anymore.
+
+we would need to import the package and then we would be able to use the functions inside it.
+
+But we can't import our own made package like we import default packages.
+We need to use the module name created in our go.mod to import it like that:
+```
+import "booking-app/helper"
+```
+
+and when we call the function, we need to indicate the package name:
+```
+helper.validateUserInput
+```
+
+We also need to export the helper package - It is very simple to do,
+we just capitalize the first letter of the function
+```
+func ValidateUserInput()
+```
+
+We can do the same for variables, and we will also Capitalize them.
