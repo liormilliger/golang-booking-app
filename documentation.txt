@@ -473,3 +473,26 @@ firstNames := getFirstNames(bookings)
 --------
 
 User Input validation can also be a candidate for its own function
+
+===========================
+Package level variables
+===========================
+I our app, we want to take the variables and let multiple functions, including the main - have access to them.
+These variables will be defined outside all the functions.
+
+the variables would need the full var syntax:
+```
+conferenceName := "Go Conference"
+```
+will become 
+```
+var conferenceName = "Go Conference"
+```
+
+and then we don't need to pass variables like this:
+```
+greetUsers(conferenceName, conferenceTickets, remainingTickets)
+```
+
+because it has a direct access to them
+We also need to change the variables in the code so they would match the global ones
