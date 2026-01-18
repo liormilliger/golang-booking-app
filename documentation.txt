@@ -750,3 +750,16 @@ How do we handle this block?
 #####################################
 Handle code blocking with Goroutines
 #####################################
+
+If this application needs to serve multiple users at a time this is not an optimal performance.
+we would need to allow another user to book tickets in parallel.
+
+Our code is running on one thread, one function after the other one, and only when a function finishes its execution, the next one will be executed.
+When we know something takes longer to be executed, we want to start a separate thread for it,
+and execute its logic in a separate thread.
+it is as simple as adding "go" before the calling of the function:
+```
+go sendTickets(variables)
+```
+
+
