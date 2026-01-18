@@ -761,5 +761,33 @@ it is as simple as adding "go" before the calling of the function:
 ```
 go sendTickets(variables)
 ```
+###########################
+Synchroniziing Go Routines
+###########################
+This application should a llow a user to book tickets once, so we don't need the for loop to iterate again and again for the ticket booking.
+BAo we would delete the for loop and see whatt happens -
+the application is being exited before the tickets are being send. All the threads are being killed by the main one.
+We need to sync the main application to wait for all the threads to finish execution before it exits,
+so we use the sync package and create a waiting group:
 
+```
+var wg = sync.WaitGroup{}
+```
 
+so just before the go sendTicket() function is being called,
+we should call the wg with the Add function and indicate how many new threads are being created:
+```
+wg.Add(1)
+```
+The second function of the WaitGroup is called "Wait" and it needs to be executed at the end of the main thread.
+And this waits for all the threads that we added to finish execution before the app exits.
+```
+wg.Wait()
+```
+
+The third function is "Done" which should be called at the end of the relevant function,
+and in our case, as the last line in func sendTicket():
+```
+wg.Done()
+```
+Done function removes the thread that we added from the waiting list.
