@@ -1,3 +1,6 @@
+Link to course on YouTube:
+https://www.youtube.com/watch?v=yyUHQIec83I
+
 ================
 ## First Step ##
 ================
@@ -667,6 +670,49 @@ func getFirstNames() []string {
 }
 ```
 
-==================
-Struct datatype
-==================
+========================
+Struct datatype 2:53:00
+========================
+Collecting different datatypes in key:value pairs.
+The struct can work as separate entities that each contain different data in various (and mixed) datatypes, as opposite to maps,
+in which datatypes cannot be mixed.
+
+In our app we will create it outside of the function, in the package level.
+we declare the struct and within the {} we define the list of keys (without "") and the type of the value for each:
+```
+struct {
+    firstName string
+    lastName string
+    email string
+    numberOfTickets uint
+}
+```
+
+we can also use a boolean or any other type we would want/need.
+
+we would need a name for our struct - let's call it userData,
+and finally, to ceate the struct datatype, we would need to use the "type" keyword at the beginning.
+```
+type userData struct {}
+```
+we create a custom type named userData.
+struct (structure) enable us to create a pre-defined structure by listing all the properties it should have.
+
+----
+
+In order to use our userData struct instead of the map,
+we would need to make some changes to our code - see in diff:
+
+```
+var bookings = make([]map[string]string, 0)
+```
+becomes
+```
+var bookings = make([]userData, 0)
+```
+
+we also need to create this in the bookTicket function (line 97 in main.go)
+The map structure is being replaced by the struct structure.
+
+One more thing to change is in the getFirstNames function, and its the way we get the first name out of the map - which is now a struct (line 66)
+
