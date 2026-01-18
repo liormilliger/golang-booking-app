@@ -716,3 +716,37 @@ The map structure is being replaced by the struct structure.
 
 One more thing to change is in the getFirstNames function, and its the way we get the first name out of the map - which is now a struct (line 66)
 
+=========================
+Concurrency (Go Routines)
+=========================
+After the user is booking a ticket, we would want to send him a ticket to the email address he added.
+we would create a function sendTicket that sends the ticket to the email entered.
+we would use a simple fmt.Printf with the variables and pass them in the function as well:
+```
+func sendTicket(userTickets uint, firstName string, lastName string){
+    fmt.Printf("%v tickets for %v %v\n". userTickets, firstName, lastName)
+}
+```
+
+Let's say we want to save it as a variable called ticket and send it per email,
+so we would use a different function from th eformat package which is called Sprintf:
+```
+func sendTicket(userTickets uint, firstName string, lastName string){
+   var ticket = fmt.Sprintf("%v tickets for %v %v\n". userTickets, firstName, lastName)
+}
+```
+
+we would also want to use this function in the main function, so right after bookTicket we would call it.
+
+Since it is going to take some time to generate and send the ticket, we want to simulate the time it takes,
+so we would use a sleep of 10 seconds command, taken from time package (that we would need to add to the packages)
+```
+time.Sleep(10 * time.Second)
+```
+
+The code will be blocked for 10 seconds until the send message will appear.
+How do we handle this block?
+
+#####################################
+Handle code blocking with Goroutines
+#####################################
